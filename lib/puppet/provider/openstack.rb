@@ -43,7 +43,8 @@ class Puppet::Provider::Openstack < Puppet::Provider
   # with command_timeout
   def self.openstack(*args)
     begin
-      Timeout.timeout(command_timeout) do
+      action = args[1]
+      Timeout.timeout(command_timeout(action)) do
         openstack_command *args
       end
     rescue Timeout::Error
@@ -132,7 +133,6 @@ class Puppet::Provider::Openstack < Puppet::Provider
             end
           end
           debug "Non-fatal error: '#{exception.message}'. Retrying for #{end_time - current_time} more seconds"
-          raise exception if no_retry_actions.include? action
           sleep retry_sleep
           retry_count += 1
           retry
