@@ -146,6 +146,18 @@
 #   underlying vhost resource.
 #   Defaults to undef.
 #
+#   [*access_log_file*]
+#     The log file name for the virtualhost.
+#     Optional. Defaults to false.
+#
+#   [*access_log_format*]
+#     The log format for the virtualhost.
+#     Optional. Defaults to false.
+#
+#   [*error_log_file*]
+#     The error log file name for the virtualhost.
+#     Optional. Defaults to undef.
+#
 define openstacklib::wsgi::apache (
   $service_name              = $name,
   $bind_host                 = undef,
@@ -176,6 +188,9 @@ define openstacklib::wsgi::apache (
   $wsgi_chunked_request      = undef,
   $vhost_custom_fragment     = undef,
   $allow_encoded_slashes     = undef,
+  $access_log_file           = false,
+  $access_log_format         = false,
+  $error_log_file            = undef,
 ) {
 
   include ::apache
@@ -243,6 +258,9 @@ define openstacklib::wsgi::apache (
     custom_fragment             => $vhost_custom_fragment,
     allow_encoded_slashes       => $allow_encoded_slashes,
     require                     => File[$service_name],
+    access_log_file             => $access_log_file,
+    access_log_format           => $access_log_format,
+    error_log_file              => $error_log_file,
   }
 
 }
