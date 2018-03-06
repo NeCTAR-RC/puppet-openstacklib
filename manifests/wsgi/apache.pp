@@ -95,6 +95,10 @@
 #   (optional) The number of workers for the vhost.
 #   Defaults to '1'
 #
+# [*access_log*]
+#   (optional) Whether to log HTTP access.
+#   Defaults to true
+#
 # [*wsgi_daemon_process*]
 #   (optional) Name of the WSGI daemon process.
 #   Defaults to $name
@@ -165,6 +169,7 @@ define openstacklib::wsgi::apache (
   $threads                   = $::os_workers,
   $user                      = undef,
   $workers                   = 1,
+  $access_log                = true,
   $wsgi_daemon_process       = $name,
   $wsgi_process_display_name = $name,
   $wsgi_process_group        = $name,
@@ -233,6 +238,7 @@ define openstacklib::wsgi::apache (
     ssl_crl_path                => $ssl_crl_path,
     ssl_crl                     => $ssl_crl,
     ssl_certs_dir               => $ssl_certs_dir,
+    access_log                  => $access_log,
     wsgi_daemon_process         => $wsgi_daemon_process,
     wsgi_daemon_process_options => $wsgi_daemon_process_options,
     wsgi_process_group          => $wsgi_process_group,
