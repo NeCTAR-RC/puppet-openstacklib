@@ -138,6 +138,10 @@
 #   (Optional) Headers for the vhost.
 #   Defaults to undef
 #
+# [*aliases*]
+#   (Optional) Aliases for the vhost.
+#   Defaults to undef
+#
 # [*custom_wsgi_process_options*]
 #   (Optional) gives you the oportunity to add custom process options or to
 #   overwrite the default options for the WSGI process.
@@ -225,6 +229,7 @@ define openstacklib::wsgi::apache (
   $wsgi_pass_authorization     = undef,
   $wsgi_chunked_request        = undef,
   $headers                     = undef,
+  $aliases                     = undef,
   $custom_wsgi_process_options = {},
   $custom_wsgi_script_aliases  = undef,
   $vhost_custom_fragment       = undef,
@@ -311,6 +316,7 @@ define openstacklib::wsgi::apache (
     wsgi_pass_authorization     => $wsgi_pass_authorization,
     wsgi_chunked_request        => $wsgi_chunked_request,
     headers                     => $headers,
+    aliases                     => $aliases,
     custom_fragment             => $vhost_custom_fragment,
     allow_encoded_slashes       => $allow_encoded_slashes,
     access_log_file             => $access_log_file,
