@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99fcca62_e241ae7c",
+        "filename": "manifests/wsgi/apache.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-16T01:08:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 9
+      },
+      "revId": "b9a3accb3117c8d6932c77b1b286e2b8353e4a58",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": true
+    }
+  ]
+}
